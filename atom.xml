@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-11-14T09:28:31.847Z</updated>
+  <updated>2019-11-14T09:34:21.381Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,15 +21,17 @@
     <link href="http://yoursite.com/2019/11/14/who-am-I/"/>
     <id>http://yoursite.com/2019/11/14/who-am-I/</id>
     <published>2019-11-14T08:53:36.000Z</published>
-    <updated>2019-11-14T09:28:31.847Z</updated>
+    <updated>2019-11-14T09:34:21.381Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="创建一个新的-post"><a href="#创建一个新的-post" class="headerlink" title="创建一个新的 post"></a>创建一个新的 post</h3><p><code>`</code> bash<br>$ hexo new “My New Post”</p>]]></content>
+    <content type="html"><![CDATA[<p>who am I? 这是一个值得思考的问题</p><p>## </p><h3 id="who-TM-am-I"><a href="#who-TM-am-I" class="headerlink" title="who TM am I?"></a>who TM am I?</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">生死看淡，不服就干</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+        &lt;p&gt;who am I? 这是一个值得思考的问题&lt;/p&gt;
+&lt;p&gt;## &lt;/p&gt;
+&lt;h3 id=&quot;who-TM-am-I&quot;&gt;&lt;a href=&quot;#who-TM-am-I&quot; class=&quot;headerlink&quot; title=&quot;who TM am I?&quot;&gt;&lt;/a&gt;who TM am I?
       
     
     </summary>
