@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="yonglei的博客">
 <meta property="og:description" content="线上问题排查，一下场景，你遇到过吗？ 一、了解机器连接数情况问题：192.168.1.10的sshd的端口是22，如何统计192.168.1.10的sshd服务各种状态（TIME_WAIT/CLOSE_WAIT/ESTABLISHED）的连接数。常见方法：1netstat -n | grep 1.2.3.4:22 | awk &apos;/^tcp/ &amp;#123;++S[$NF]&amp;#125; END &amp;#1">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-15T05:41:56.586Z">
+<meta property="og:updated_time" content="2019-11-15T05:44:21.158Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线上问题排查，这些Linux命令你一定用得到">
 <meta name="twitter:description" content="线上问题排查，一下场景，你遇到过吗？ 一、了解机器连接数情况问题：192.168.1.10的sshd的端口是22，如何统计192.168.1.10的sshd服务各种状态（TIME_WAIT/CLOSE_WAIT/ESTABLISHED）的连接数。常见方法：1netstat -n | grep 1.2.3.4:22 | awk &apos;/^tcp/ &amp;#123;++S[$NF]&amp;#125; END &amp;#1">
@@ -177,7 +177,8 @@
 <p>说明：这个命令线上应用较为频繁，在项目需要打包迁移时，常常需要排除掉日志目录，exclude时需要掌握的参数。</p>
 <p>四、查询线程数<br>问题：查询服务器运行服务的总线程数，当机器线程数超报警阀值时，能快速查出相关进程及线程信息<br>常见方法：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ps -eLf|wc -l</span><br><span class="line">pstree -p|wc -l</span><br></pre></td></tr></table></figure></p>
 <p>五、磁盘报警，清空最大文件<br>问题：找出服务器上，某个正在运行的tomcat产生的大量异常日志，找出该文件，并释放空间。不妨设该文件包含log关键字，并且大于1G。<br>常见方法：</p>
-<h4 id="第一步，找到该文件"><a href="#第一步，找到该文件" class="headerlink" title="第一步，找到该文件"></a>第一步，找到该文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">find / -<span class="built_in">type</span> f -name <span class="string">"*log*"</span> | xargs ls -lSh | more </span><br><span class="line">du -a / | sort -rn |grep <span class="built_in">log</span> | more</span><br><span class="line">find / -name <span class="string">"*log*"</span> -size+1000M -<span class="built_in">exec</span> du -h&#123;&#125; \</span><br><span class="line"><span class="comment">#### 第二步，将文件清空</span></span><br><span class="line">假设找到的文件为a.log</span><br><span class="line">正确的清空方式应该为：</span><br><span class="line">```bash</span><br><span class="line"><span class="built_in">echo</span> <span class="string">""</span>&gt;a.log</span><br></pre></td></tr></table></figure>
+<h4 id="第一步，找到该文件"><a href="#第一步，找到该文件" class="headerlink" title="第一步，找到该文件"></a>第一步，找到该文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">find / -<span class="built_in">type</span> f -name <span class="string">"*log*"</span> | xargs ls -lSh | more </span><br><span class="line">du -a / | sort -rn |grep <span class="built_in">log</span> | more</span><br><span class="line">find / -name <span class="string">"*log*"</span> -size+1000M -<span class="built_in">exec</span> du -h&#123;&#125; \</span><br></pre></td></tr></table></figure>
+<h4 id="第二步，将文件清空"><a href="#第二步，将文件清空" class="headerlink" title="第二步，将文件清空"></a>第二步，将文件清空</h4><p>假设找到的文件为a.log<br>正确的清空方式应该为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">""</span>&gt;a.log</span><br></pre></td></tr></table></figure></p>
 <p>文件空间会立刻释放。<br>很多人会使用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf a.log</span><br></pre></td></tr></table></figure></p>
 <p>这样文件虽然删除，但是因tomcat服务仍在运行，空间不会立刻释放，需要重启tomcat才能将空间释放。</p>
 <p>六、显示文件，过滤注释<br>问题：显示server.conf文件，屏蔽掉#号开头的注释行<br>常见方法：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -n <span class="string">"/^[#]/!p"</span> server.conf</span><br></pre></td></tr></table></figure></p>
@@ -284,20 +285,6 @@
 </article>
 
   
-<nav id="article-nav">
-  
-    <a href="/2019/11/14/who-am-I/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          who am I?
-        
-      </div>
-    </a>
-  
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
