@@ -17,7 +17,7 @@
 <meta property="og:description" content="线上启动某个服务的时候我们经常会用到nohup和&amp;amp;，那么nohup和&amp;amp;究竟有什么区别呢？ 先看一段测试代码12345678#include &amp;lt;stdio.h&amp;gt;void main() &amp;#123;     int i=0;     while(1)&amp;#123;         printf(&quot;hello,%d\n&quot;,i++);	 sleep(1);     &amp;#125;&amp;">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://yonglei89.github.io/2018/05/15/nohup-and-ad/2.jpg">
-<meta property="og:updated_time" content="2019-11-15T07:49:00.548Z">
+<meta property="og:updated_time" content="2019-11-15T07:51:22.701Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nohup和&amp;有什么区别">
 <meta name="twitter:description" content="线上启动某个服务的时候我们经常会用到nohup和&amp;amp;，那么nohup和&amp;amp;究竟有什么区别呢？ 先看一段测试代码12345678#include &amp;lt;stdio.h&amp;gt;void main() &amp;#123;     int i=0;     while(1)&amp;#123;         printf(&quot;hello,%d\n&quot;,i++);	 sleep(1);     &amp;#125;&amp;">
@@ -169,7 +169,7 @@
         <p>线上启动某个服务的时候我们经常会用到nohup和&amp;，那么nohup和&amp;究竟有什么区别呢？</p>
 <p>先看一段测试代码<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">     <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">     <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">         <span class="built_in">printf</span>(<span class="string">"hello,%d\n"</span>,i++);</span><br><span class="line">	 sleep(<span class="number">1</span>);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这是一个输出hello与循环轮数的死循环程序，每输出一行就休眠1秒</p>
-<p><strong>使用./a.out前台运行程序，会是什么效果呢？</strong><br><img src="//yonglei89.github.io/2018/05/15/nohup-and-ad/2.jpg" alt><br>程序每隔一秒会在终端输出一个字符串<br>此时如果<code>键入Ctrl+C</code>，程序会收到一个SIGINT信号，如果不做特殊处理，程序的默认行为时终止（如上图）</p>
+<p><strong>使用./a.out前台运行程序，会是什么效果呢？</strong><br><img src="//yonglei89.github.io/2018/05/15/nohup-and-ad/2.jpg" alt><br>程序每隔一秒会在终端输出一个字符串<br>此时如果<code>键入Ctrl+C</code>，程序会收到一个SIGINT信号，如果不做特殊处理，程序的默认行为时终止（如上图）<br><a id="more"></a></p>
 
       
 
