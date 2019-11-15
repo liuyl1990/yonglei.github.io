@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="yonglei的博客">
 <meta property="og:description" content="线上问题排查，一下场景，你遇到过吗？ 一、了解机器连接数情况问题：192.168.1.10的sshd的端口是22，如何统计192.168.1.10的sshd服务各种状态（TIME_WAIT/CLOSE_WAIT/ESTABLISHED）的连接数。常见方法：1netstat -n | grep 1.2.3.4:22 | awk &apos;/^tcp/ &amp;#123;++S[$NF]&amp;#125; END &amp;#1">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-15T07:51:37.063Z">
+<meta property="og:updated_time" content="2019-11-15T07:55:46.813Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线上问题排查，这些Linux命令你一定用得到">
 <meta name="twitter:description" content="线上问题排查，一下场景，你遇到过吗？ 一、了解机器连接数情况问题：192.168.1.10的sshd的端口是22，如何统计192.168.1.10的sshd服务各种状态（TIME_WAIT/CLOSE_WAIT/ESTABLISHED）的连接数。常见方法：1netstat -n | grep 1.2.3.4:22 | awk &apos;/^tcp/ &amp;#123;++S[$NF]&amp;#125; END &amp;#1">
@@ -168,6 +168,7 @@
 <p>一、了解机器连接数情况<br>问题：192.168.1.10的sshd的端口是22，如何统计192.168.1.10的sshd服务各种状态（TIME_WAIT/CLOSE_WAIT/ESTABLISHED）的连接数。<br>常见方法：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -n | grep 1.2.3.4:22 | awk <span class="string">'/^tcp/ &#123;++S[$NF]&#125; END &#123;for(a in S) print a, S[a]&#125;’</span></span><br></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -lnpta | grep ssh | egrep “TIME_WAIT | CLOSE_WAIT | ESTABLISHED”</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">n [仅限于阿里云]</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>说明：netstat是追查网络连接问题常用工具，和grep/awk结合更是神器，当然在阿里云上，还有更方便的方法。</p>
 <p>二、从已经备份好的日志中查询数据<br>问题：从已备份的ais-2018-02-20.log.bz2日志种，找出包含关键字192.168.1.10的日志有多少条。<br>常见方法：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bzcat ais-2018-02-20.log.bz2|grep <span class="string">'192.168.1.10'</span>|wc -l</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bzgrep <span class="string">'192.168.1.10'</span> ais-2018-02-20.log.bz2|wc -l</span><br></pre></td></tr></table></figure>
@@ -188,7 +189,7 @@
 <h4 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iotop -o</span><br></pre></td></tr></table></figure>
 <p>查看当前正在写磁盘操作的所有进程ID信息</p>
 <h4 id="第二步：如果此时各项写入指标都很低，基本没有大的写入操作，则需要排查磁盘自身，可以查看系统"><a href="#第二步：如果此时各项写入指标都很低，基本没有大的写入操作，则需要排查磁盘自身，可以查看系统" class="headerlink" title="第二步：如果此时各项写入指标都很低，基本没有大的写入操作，则需要排查磁盘自身，可以查看系统"></a>第二步：如果此时各项写入指标都很低，基本没有大的写入操作，则需要排查磁盘自身，可以查看系统</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dmesg 或 cat /var/<span class="built_in">log</span>/message</span><br></pre></td></tr></table></figure>
-<p>看看是否有相关的磁盘异常报错，同时可以在写入慢的磁盘上touch一个空文件看看，是否磁盘故障导致无法写入。<br><a id="more"></a></p>
+<p>看看是否有相关的磁盘异常报错，同时可以在写入慢的磁盘上touch一个空文件看看，是否磁盘故障导致无法写入。</p>
 
       
 
