@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="https://yonglei89.github.io/"/>
   <updated>2019-11-14T09:34:21.381Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>https://yonglei89.github.io/</id>
   
   <author>
     <name>yonglei</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>who am I?</title>
-    <link href="http://yoursite.com/2019/11/14/who-am-I/"/>
-    <id>http://yoursite.com/2019/11/14/who-am-I/</id>
+    <link href="https://yonglei89.github.io/2019/11/14/who-am-I/"/>
+    <id>https://yonglei89.github.io/2019/11/14/who-am-I/</id>
     <published>2019-11-14T08:53:36.000Z</published>
     <updated>2019-11-14T09:34:21.381Z</updated>
     
@@ -42,8 +42,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2018/03/22/hello-world/"/>
-    <id>http://yoursite.com/2018/03/22/hello-world/</id>
+    <link href="https://yonglei89.github.io/2018/03/22/hello-world/"/>
+    <id>https://yonglei89.github.io/2018/03/22/hello-world/</id>
     <published>2018-03-22T04:08:15.124Z</published>
     <updated>2018-03-22T08:28:16.554Z</updated>
     
