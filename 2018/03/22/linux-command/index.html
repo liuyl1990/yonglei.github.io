@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://yonglei89.github.io">
-  <title>Archives | yonglei的博客</title>
+  <title>线上问题排查，这些Linux命令你一定用得到 | yonglei的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="呵，搞电脑的">
+  <meta name="description" content="线上问题排查，一下场景，你遇到过吗？ 一、了解机器连接数情况问题：192.168.1.10的sshd的端口是22，如何统计192.168.1.10的sshd服务各种状态（TIME_WAIT/CLOSE_WAIT/ESTABLISHED）的连接数。常见方法 123netstat -n | grep 1.2.3.4:22 | awk &apos;/^tcp/ &amp;#123;++S[$NF]&amp;#125; END &amp;">
 <meta name="keywords" content="程序员、程序猿、码农、Linux、后端、前端、软件工程师、Java">
-<meta property="og:type" content="website">
-<meta property="og:title" content="yonglei的博客">
-<meta property="og:url" content="https://yonglei89.github.io/archives/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线上问题排查，这些Linux命令你一定用得到">
+<meta property="og:url" content="https://yonglei89.github.io/2018/03/22/linux-command/index.html">
 <meta property="og:site_name" content="yonglei的博客">
-<meta property="og:description" content="呵，搞电脑的">
+<meta property="og:description" content="线上问题排查，一下场景，你遇到过吗？ 一、了解机器连接数情况问题：192.168.1.10的sshd的端口是22，如何统计192.168.1.10的sshd服务各种状态（TIME_WAIT/CLOSE_WAIT/ESTABLISHED）的连接数。常见方法 123netstat -n | grep 1.2.3.4:22 | awk &apos;/^tcp/ &amp;#123;++S[$NF]&amp;#125; END &amp;">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-15T04:12:30.681Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="yonglei的博客">
-<meta name="twitter:description" content="呵，搞电脑的">
+<meta name="twitter:title" content="线上问题排查，这些Linux命令你一定用得到">
+<meta name="twitter:description" content="线上问题排查，一下场景，你遇到过吗？ 一、了解机器连接数情况问题：192.168.1.10的sshd的端口是22，如何统计192.168.1.10的sshd服务各种状态（TIME_WAIT/CLOSE_WAIT/ESTABLISHED）的连接数。常见方法 123netstat -n | grep 1.2.3.4:22 | awk &apos;/^tcp/ &amp;#123;++S[$NF]&amp;#125; END &amp;">
   
   
     <link rel="icon" href="/images/favicon.ico">
@@ -143,86 +144,174 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-linux-command" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/14/who-am-I/" class="archive-article-date">
-  	<time datetime="2019-11-14T08:53:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-14</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/14/who-am-I/">who am I?</a>
+    <h1 class="article-title" itemprop="name">
+      线上问题排查，这些Linux命令你一定用得到
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/22/linux-command/" class="archive-article-date">
+        
+        <a href="/2018/03/22/linux-command/" class="archive-article-date">
   	<time datetime="2018-03-22T04:08:15.124Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-22</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/22/linux-command/">线上问题排查，这些Linux命令你一定用得到</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>线上问题排查，一下场景，你遇到过吗？</p>
+<h3 id="一、了解机器连接数情况"><a href="#一、了解机器连接数情况" class="headerlink" title="一、了解机器连接数情况"></a>一、了解机器连接数情况</h3><p>问题：192.168.1.10的sshd的端口是22，如何统计192.168.1.10的sshd服务各种状态（TIME_WAIT/CLOSE_WAIT/ESTABLISHED）的连接数。<br>常见方法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">netstat -n | grep 1.2.3.4:22 | awk <span class="string">'/^tcp/ &#123;++S[$NF]&#125; END &#123;for(a in S) print a, S[a]&#125;’</span></span><br><span class="line"><span class="string">netstat -lnpta | grep ssh | egrep “TIME_WAIT | CLOSE_WAIT | ESTABLISHED”</span></span><br><span class="line"><span class="string">n [仅限于阿里云]</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃鸡腿<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/wx_qrcode.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p style="margin-top:10px;">微信扫一扫，右上角分享</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yonglei89.github.io/2018/03/22/linux-command/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/11/14/who-am-I/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          who am I?
+        
+      </div>
+    </a>
   
   
-    </div></section>
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -245,8 +334,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
