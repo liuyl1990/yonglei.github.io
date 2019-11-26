@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="yonglei的博客">
 <meta property="og:description" content="线上问题排查，一下场景，你遇到过吗？ 一、了解机器连接数情况问题：192.168.1.10的sshd的端口是22，如何统计192.168.1.10的sshd服务各种状态（TIME_WAIT/CLOSE_WAIT/ESTABLISHED）的连接数。常见方法：1netstat -n | grep 1.2.3.4:22 | awk &apos;/^tcp/ &amp;#123;++S[$NF]&amp;#125; END &amp;#1">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-18T04:00:58.715Z">
+<meta property="og:updated_time" content="2019-11-19T08:47:12.682Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线上问题排查，这些Linux命令你一定用得到">
 <meta name="twitter:description" content="线上问题排查，一下场景，你遇到过吗？ 一、了解机器连接数情况问题：192.168.1.10的sshd的端口是22，如何统计192.168.1.10的sshd服务各种状态（TIME_WAIT/CLOSE_WAIT/ESTABLISHED）的连接数。常见方法：1netstat -n | grep 1.2.3.4:22 | awk &apos;/^tcp/ &amp;#123;++S[$NF]&amp;#125; END &amp;#1">
@@ -42,7 +42,7 @@
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
-      
+      -
 <div class="overlay" style="background: #4d4d4d">
 <nav class="header-smart-menu" style="margin:20px auto;text-align:center;width:150px;">
 		<span id="busuanzi_container_site_uv" style="color:#9FB6CD;font-size:14px">访客数<span id="busuanzi_value_site_uv"></span>人次</span>
@@ -432,6 +432,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">database</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nohup</a>
