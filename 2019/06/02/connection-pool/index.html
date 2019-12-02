@@ -16,16 +16,16 @@
 <meta property="og:site_name" content="yonglei的博客">
 <meta property="og:description" content="没错，说的就是连接池，玩互联网架构，连接池是必须要掌握的。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://yonglei89.github.io/2019/06/02/connection-pool/6.jpg">
+<meta property="og:image" content="https://yonglei89.github.io/2019/06/02/connection-pool/1.jpg">
 <meta property="og:image" content="https://yonglei89.github.io/2019/06/02/connection-pool/2.jpg">
 <meta property="og:image" content="https://yonglei89.github.io/2019/06/02/connection-pool/3.jpg">
 <meta property="og:image" content="https://yonglei89.github.io/2019/06/02/connection-pool/4.jpg">
 <meta property="og:image" content="https://yonglei89.github.io/2019/06/02/connection-pool/5.jpg">
-<meta property="og:updated_time" content="2019-12-02T07:58:16.177Z">
+<meta property="og:updated_time" content="2019-12-02T08:02:28.428Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="故障转移，服务发现，负载均衡，居然都和它有关">
 <meta name="twitter:description" content="没错，说的就是连接池，玩互联网架构，连接池是必须要掌握的。">
-<meta name="twitter:image" content="https://yonglei89.github.io/2019/06/02/connection-pool/6.jpg">
+<meta name="twitter:image" content="https://yonglei89.github.io/2019/06/02/connection-pool/1.jpg">
   
   
     <link rel="icon" href="/images/favicon.ico">
@@ -175,7 +175,7 @@
       
         <p>没错，说的就是连接池，玩互联网架构，连接池是必须要掌握的。<br><a id="more"></a></p>
 <p><strong>什么是连接池？</strong><br>创建与管理连接缓冲池的技术，本质是资源复用，不用频繁创建与销毁连接，能提高性能。</p>
-<p>微服务分层架构中，连接池扮演者极其重要的角色。<br><img src="//yonglei89.github.io/2019/06/02/connection-pool/6.jpg" alt><br>如上图：<br>（1）上层虚线框，是web集群；<br>（2）下层虚线框，是service集群；<br>（3）绿色框，代表一条上下游建立的连接；<br>（4）蓝色框，代表连接池;</p>
+<p>微服务分层架构中，连接池扮演者极其重要的角色。<br><img src="//yonglei89.github.io/2019/06/02/connection-pool/1.jpg" alt><br>如上图：<br>（1）上层虚线框，是web集群；<br>（2）下层虚线框，是service集群；<br>（3）绿色框，代表一条上下游建立的连接；<br>（4）蓝色框，代表连接池;</p>
 <p>此例中，一个调用方会与一个服务节点建立2条连接，服务集群共3个集群，故连接池总共6条连接，从c1到c6.</p>
 <p>上层调用方，除了会从连接池中拿连接收发报文访问下游服务外，互联网架构中，<code>还有哪些技术点</code>与连接池相关呢？</p>
 <p><strong>一、故障转义与服务发现</strong><br><img src="//yonglei89.github.io/2019/06/02/connection-pool/2.jpg" alt><br>如上图：<br>（1）故障转移，假如旧的服务节点s1出现了故障，c1和c2连接失效，会被从连接池中剔除，后续请求不会再发生到故障的节点中；<br>（2）假如新的服务节点s4上线，c7和c8连接建立，会被加入到连接池中来，后续请求会发送到新增的节点中；</p>
@@ -188,6 +188,7 @@
 <p><code>3个区间的宽度与服务的权重成正比，即落到某个服务的概率等同权重</code>。<br>那么，<strong>如果服务节点的服务能力有差异，但又很难用静态权重标识，怎么办呢？</strong></p>
 <p><strong>四、动态权重负载均衡</strong><br><img src="//yonglei89.github.io/2019/06/02/connection-pool/5.jpg" alt><br>如上图：连接池初始化时，为连接分配一个动态的权重。</p>
 <p>仍按照之前的方法分配负载，只是：<br>（1）连接处理超时，动态权重下降；<br>（2）连接处理成功，动态权重上升；</p>
+<p>注：本文来自于58沈剑，公号<code>架构师之路</code></p>
 
       
 
@@ -425,11 +426,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">连接池</a>
+                <a href="javascript:void(0)" class="js-tag color4">database</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">database</a>
+                <a href="javascript:void(0)" class="js-tag color4">连接池</a>
               </li>
              
               <li class="article-tag-list-item">
